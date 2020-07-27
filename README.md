@@ -3,9 +3,9 @@
 
 
 # 사용법
-> 전국 통계 구하기
+> 전국 통계 구하기        
 
-입력 : 
+입력 :     
 ```js
 const covid19 = require("covid19-korea");
 
@@ -13,8 +13,15 @@ const covid19 = require("covid19-korea");
     let corona = await covid19.getTotal()
     console.log(corona)
 })()
+
+// 혹은...
+const covid19 = require("covid19-korea")
+
+covid19.getTotal().then(result => {
+    console.log(result)
+})
 ```
-결과 :
+결과 :      
 ```js
 [
   {
@@ -27,7 +34,8 @@ const covid19 = require("covid19-korea");
 ]
 ```
 
-> 특정 도시 통계 구하기
+> 특정 도시 통계 구하기   
+    
 ! 조회가능한 도시 목록 :    
 서울, 부산, 대구, 인천, 광주, 대전, 울산, 세종, 경기, 강원, 충북, 충남, 전북, 전남, 경북, 경남, 제주
 
@@ -54,16 +62,36 @@ const covid19 = require("covid19-korea");
 ]
 ```
 
-> 반환되는 정보 (공통)
+> 반환되는 정보 (공통)        
 confirm - 확진자     
 cure - 완치   
 curing - 치료(격리) 중    
 dead - 사망    
 
-> 반환되는 정보 (전체)
+> 반환되는 정보 (전체)          
 accumlate - 누적 검사수   
 
-> 반환되는 정보 (특정 도시)
+> 반환되는 정보 (특정 도시)           
 incidence - 10만명당 발생률 (퍼센트)   
+
+# Discord.js 랑 같이 쓰기
+```js
+const Discord = require("discord.js")
+const client = new Discord.Client()
+const covid19 = require("covid19-korea")
+
+client.on("ready", () => {
+    console.log("ready!")
+}
+
+client.on('message, async message => { // async 쓰셔야합니다!
+    if(message.content.startsWith("코로나")) {
+        let confirm = await covid19.getTotal()
+        message.channel.send(confirm + "명")
+    }
+})
+
+client.login('token')
+```
 
 # 문제가 있으면 이슈로 알려주세요.
