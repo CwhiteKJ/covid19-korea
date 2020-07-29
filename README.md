@@ -84,7 +84,7 @@ client.on("ready", () => {
     console.log("ready!")
 }
 
-client.on('message, async message => { // async 쓰셔야합니다!
+client.on('message', async message => { // async 쓰셔야합니다!
     if(message.content.startsWith("코로나")) {
         let corona = await covid19.getTotal()
         message.channel.send(corona[0].confirm + "명")
