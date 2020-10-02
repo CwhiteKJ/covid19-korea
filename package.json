@@ -1,0 +1,26 @@
+{
+  "name": "covid19-korea",
+  "version": "1.0.0",
+  "description": "웹크롤링이 힘든분을 위해 간단하게 대한민국 코로나19 현황을 가져올 수 있는 모듈입니다.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CwhiteKJ/covid19-korea.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CwhiteKJ/covid19-korea/issues"
+  },
+  "homepage": "https://github.com/CwhiteKJ/covid19-korea#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2"
+  }
+}
