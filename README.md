@@ -21,7 +21,7 @@ covid19.getTotal().then(result => {
 })
 ```    
 OUTPUT:
-```json
+```js
 [
   {
     confirm: '14,175',
@@ -43,7 +43,7 @@ const covid19 = require("covid19-korea")
 })()
 ```    
 OUTPUT:
-```json
+```js
 [
   {
     confirm: '1,574',
