@@ -1,28 +1,27 @@
-# covid19-korea
-웹크롤링이 힘든분을 위해 간단하게 대한민국 코로나19 현황을 가져올 수 있는 모듈입니다.
+# COVID-19 [ KOREA ]
 
+웹 크롤링 없이 간단하게 대한민국의 코로나19 현황을 가져오세요.     
 
-# 사용법
-> 전국 통계 구하기        
-
-입력 :     
+## 대한민국 전체 통계 구하기    
+INPUT: 
 ```js
-const covid19 = require("covid19-korea");
+const covid19 = require("covid19-korea")
 
 (async () => {
     let corona = await covid19.getTotal()
     console.log(corona)
 })()
 
-// 혹은...
+/* 또 다른 방법으로는... */
+
 const covid19 = require("covid19-korea")
 
 covid19.getTotal().then(result => {
     console.log(result)
 })
-```
-결과 :      
-```js
+```    
+OUTPUT:
+```json
 [
   {
     confirm: '14,175',
@@ -32,25 +31,19 @@ covid19.getTotal().then(result => {
     accumlate: '1,526,974 건'
   }
 ]
-```
-
-> 특정 도시 통계 구하기   
-    
-! 조회가능한 도시 목록 :    
-서울, 부산, 대구, 인천, 광주, 대전, 울산, 세종, 경기, 강원, 충북, 충남, 전북, 전남, 경북, 경남, 제주
-
-입력 : 
+```    
+## 특정 도시의 통계 구하기    
+INPUT:
 ```js
-const covid19 = require("covid19-korea");
+const covid19 = require("covid19-korea")
 
 (async () => {
-    let corona = await covid19.getTotal("서울") // 서울말고도 여러 도시가 가능합니다
+    let corona = await covid19.getTotal("서울") // 서울말고도 여러 도시가 가능합니다.
     console.log(corona)
 })()
-```
-
-결과 : 
-```js
+```    
+OUTPUT:
+```json
 [
   {
     confirm: '1,574',
@@ -62,19 +55,12 @@ const covid19 = require("covid19-korea");
 ]
 ```
 
-> 반환되는 정보 (공통)        
-confirm - 확진자     
-cure - 완치   
-curing - 치료(격리) 중    
-dead - 사망    
+## 반환되는 정보
+|confirm|cure|curing|dead|accumlate|incidence|
+|-------|----|------|----|---------|---------|
+|확진자|완치|치료 중|사망|누적 검사 수|10만명 당 발생률|
 
-> 반환되는 정보 (전체)          
-accumlate - 누적 검사수   
-
-> 반환되는 정보 (특정 도시)           
-incidence - 10만명당 발생률 (퍼센트)   
-
-# Discord.js 랑 같이 쓰기
+### Discord.js 와 같이 사용하기 
 ```js
 const Discord = require("discord.js")
 const client = new Discord.Client()
@@ -84,7 +70,7 @@ client.on("ready", () => {
     console.log("ready!")
 }
 
-client.on('message', async message => { // async 쓰셔야합니다!
+client.on('message', async message => { // async 사용 해야합니다.
     if(message.content.startsWith("코로나")) {
         let corona = await covid19.getTotal()
         message.channel.send(corona[0].confirm + "명")
@@ -93,5 +79,3 @@ client.on('message', async message => { // async 쓰셔야합니다!
 
 client.login('token')
 ```
-
-# 문제가 있으면 이슈로 알려주세요.
